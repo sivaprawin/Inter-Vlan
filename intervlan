@@ -1,0 +1,149 @@
+SOURCE CODE
+Configuration of Switches:
+SWITCH S1
+Enable
+configure terminal
+no ip domain-lookup
+service password-encryption
+enable secret class
+banner motd #
+unauthorized access is strictly prohibited. #
+line con 0
+password cisco
+login
+logging synchronous
+line vty 0 15
+password cisco
+login
+exit
+hostname s1
+interface vlan 1
+ip address 192.168.1.11 255.255.255.0
+exit
+ip default-gateway 192.168.1.1
+do sh ip inter b
+interface vlan 1
+no shutdown
+exit
+interface range fastEthernet 0/4,f0/7-24,g0/1-2
+shutdown
+^z (ctrl+z)
+copy running-config startup-config
+enable
+cisco (password) configure terminal
+vlan 10
+name students
+exit
+vlan 20
+namefaculty
+9
+exit
+interface f0/1
+switchport mode trunk
+exit
+interface f0/5
+switchport mode trunk
+exit
+interface f0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface f0/3
+switchport mode access
+switchport access vlan 10
+exit
+interface f0/6
+switchport mode access
+switchport access vlan 10
+^z (ctrl+z) copy running-config startup-config
+SWITCH S2
+enable
+configure terminal
+no ip domain-lookup
+service password-encryption
+enable secret class
+banner motd #
+unauthorized access is strictly prohibited. #
+line con 0
+password cisco
+login
+logging synchronous
+line vty 0 15
+password cisco
+login
+exit
+hostname s2
+interface vlan 1
+ip address 192.168.1.12 255.255.255.0
+10
+exit
+ip default-gateway 192.168.1.1
+do sh ip inter b
+interface vlan 1
+no shutdown
+exit
+interface range fastEthernet 0/4-17,f0/19-24,g0/1-2
+shutdown
+^z (ctrl+z) copy running-config startup-config
+enable
+cisco (password) configure terminal
+vlan 10
+name students
+vlan 20
+name faculty
+exit
+interface f0/1
+switchport mode trunk
+exit
+interface f0/2
+switchport mode access
+switchport access vlan 20
+exit
+interface f0/3
+switchport mode access
+switchport access vlan 20
+exit
+interface f0/18
+switchport mode access
+switchport access vlan 20
+^z (ctrl+z) copy running-config startup-config
+Configuration of Router Interface
+ROUTER R1
+enable
+configure terminal
+no ip domain-lookup
+11
+hostname R1
+service password-encryption
+enable secret class
+banner motd #
+unauthorized access is strictly prohibited. #
+line con 0
+password cisco
+login
+logging synchronous
+line vty 0 15
+password cisco
+login
+exit
+interface loopback 0
+ip address 209.165.200.225 255.255.255.0 ^z
+(ctrl+z) copy running-config startup-config
+enable
+cisco (password) configure terminal
+interface gigabitEthernet 0/1.1
+encapsulation dot1Q 1
+ip address 192.168.1.1 255.255.255.0
+exit
+interface g0/1.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+interface g0/1.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+interface g0/1
+no shutdown
+^z (ctrl+z) show ip route
+copy running-config startup-config
