@@ -1,6 +1,7 @@
-SOURCE CODE
-Configuration of Switches:
-SWITCH S1
+#SOURCE CODE
+#Configuration of Switches:
+#SWITCH S1
+
 Enable
 configure terminal
 no ip domain-lookup
@@ -56,7 +57,7 @@ interface f0/6
 switchport mode access
 switchport access vlan 10
 ^z (ctrl+z) copy running-config startup-config
-SWITCH S2
+#SWITCH S2
 enable
 configure terminal
 no ip domain-lookup
@@ -107,8 +108,10 @@ interface f0/18
 switchport mode access
 switchport access vlan 20
 ^z (ctrl+z) copy running-config startup-config
-Configuration of Router Interface
-ROUTER R1
+
+#Configuration of Router Interface
+#ROUTER R1
+
 enable
 configure terminal
 no ip domain-lookup
